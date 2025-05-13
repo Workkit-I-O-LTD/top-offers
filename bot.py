@@ -3,10 +3,14 @@ from telegram.ext import Application, CommandHandler, CallbackQueryHandler, Cont
 import csv
 import requests
 from io import StringIO
+from dotenv import load_dotenv
+import os
 
-BOT_TOKEN = "7777734579:AAEO2DgIr9BlRGAF3FgKAa0Oh6Z-EPS_II4"
-CHANNEL_LINK = "https://t.me/+Lt160mnKTPhjZDY0"
-CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vT-xCUDsB9J9VHBQE6XCz-6W7pampRwj3kKcvYNRrSCTfTMkituw2_4vIzk1Xy02mTHLzmiOX-Ol3B5/pub?gid=2124569128&single=true&output=csv"  # Replace with your real published CSV link
+load_dotenv()
+
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHANNEL_LINK = os.getenv("CHANNEL_LINK")
+CSV_URL = os.getenv("CSV_URL")
 
 # ✅ Pull live offers from the public Google Sheet (CSV)
 def get_offers_by_geo(geo: str):
